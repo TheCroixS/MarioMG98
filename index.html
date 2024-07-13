@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Martínez Gómez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+            border: 3px solid transparent;
+            animation: ledBorder 5s linear infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes dropIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes ledBorder {
+            0% {
+                border-color: #4CAF50;
+                box-shadow: 0 0 5px #4CAF50, 0 0 10px #4CAF50;
+            }
+            25% {
+                border-color: #33A6B8;
+                box-shadow: 0 0 5px #33A6B8, 0 0 10px #33A6B8;
+            }
+            50% {
+                border-color: #2E8B57;
+                box-shadow: 0 0 5px #2E8B57, 0 0 10px #2E8B57;
+            }
+            75% {
+                border-color: #33A6B8;
+                box-shadow: 0 0 5px #33A6B8, 0 0 10px #33A6B8;
+            }
+            100% {
+                border-color: #4CAF50;
+                box-shadow: 0 0 5px #4CAF50, 0 0 10px #4CAF50;
+            }
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background: url('forest.webp') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+            animation: parallax 20s linear infinite;
+        }
+        @keyframes parallax {
+            0% { background-position: center 0; }
+            50% { background-position: center 50%; }
+            100% { background-position: center 0; }
+        }
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            font-size: 3em;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            animation: slideIn 1s ease-in-out;
+        }
+        header p {
+            font-size: 1.2em;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        nav {
+            text-align: center;
+            background-color: #333;
+            padding: 10px 0;
+            border-radius: 0 0 10px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            animation: dropIn 1s ease-in-out;
+        }
+        nav a {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        section:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
+        }
+        section::before, section::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(76, 175, 80, 0.5), rgba(33, 150, 243, 0.5));
+            animation: gradientMove 5s ease infinite;
+        }
+        section::before {
+            left: 0;
+        }
+        section::after {
+            right: 0;
+        }
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            transition: color 0.3s ease;
+        }
+        section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+        }
+        section h2:hover {
+            color: #4CAF50;
+        }
+        section p, section ul {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        section ul {
+            list-style: none;
+            padding: 0;
+        }
+        section ul li::before {
+            content: "\2022";
+            color: #4CAF50;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info a:hover {
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .icons i {
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: #4CAF50;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .icons i:hover {
+            transform: scale(1.2);
+            color: #007BFF;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+            color: #fff;
+            border-radius: 0 0 10px 10px;
+            border: 3px solid transparent;
+            animation: ledBorder 5s linear infinite;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4CAF50;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 20px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            border-radius: 6px;
+            animation: sectionFade 1s ease-in-out;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17.5px;
+            background-color: #4CAF50;
+            border: 4px solid #fff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after {
+            left: -17.5px;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .timeline-item-content {
+            padding: 20px 30px;
+            background-color: #f4f4f9;
+            position: relative;
+            border-radius: 6px;
+        }
+        .timeline-item-content h3 {
+            margin: 0;
+            font-size: 1.2em;
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline-item-content h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+        }
+        .timeline-item-content p {
+            margin: 5px 0 0;
+        }
+        .gradient-left, .gradient-right {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 10%;
+            background: linear-gradient(45deg, rgba(76, 175, 80, 0.5), rgba(33, 150, 243, 0.5));
+            background-size: 200% 200%;
+            animation: gradientMove 5s ease infinite, rgbLoop 10s ease infinite;
+            z-index: 0;
+        }
+        .gradient-left {
+            left: 0;
+        }
+        .gradient-right {
+            right: 0;
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .scroll-top:hover {
+            background-color: #45a049;
+        }
+        .scroll-top i {
+            font-size: 1.5em;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .custom-audio {
+            display: block;
+            width: 150px;
+            height: 30px;
+            margin: 20px auto;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #4CAF50, #33A6B8);
+            padding: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        audio {
+            width: 100%;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .comments-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .comments-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .comments-section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+        }
+        .comment-box {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .comment-box textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        .comment-box button {
+            align-self: flex-end;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .comment-box button:hover {
+            background-color: #45a049;
+        }
+        .comments-list {
+            list-style: none;
+            padding: 0;
+        }
+        .comment-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f4f4f9;
+            border: 1px solid #ddd;
+        }
+        .comment-item p {
+            margin: 0;
+        }
+        .comment-item .comment-author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-left"></div>
+    <div class="gradient-right"></div>
+    <header>
+        <h1>Mario Martínez Gómez</h1>
+        <p>Ingeniero Comercial en formación, apasionado por las telecomunicaciones y la gestión</p>
+    </header>
+    <nav>
+        <a href="#profile">Perfil</a>
+        <a href="#experience">Experiencia</a>
+        <a href="#education">Formación</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#languages">Idiomas</a>
+        <a href="#training">Capacitación</a>
+        <a href="#licenses">Licencias</a>
+        <a href="#gallery">Galería</a>
+        <a href="#contact">Contacto</a>
+        <a href="#comments">Comentarios</a>
+    </nav>
+    <div class="container">
+        <section id="profile">
+            <h2>Perfil Profesional</h2>
+            <p>Soy Mario, un apasionado por las telecomunicaciones y la gestión, áreas en las que constantemente busco mejorar. Me entusiasma cómo la tecnología puede transformar nuestra sociedad. Se me facilita asimilar nueva información y siempre busco ampliar mis conocimientos. Mi objetivo es fusionar mi pasión por las telecomunicaciones y la gestión para contribuir al constante desarrollo en estas áreas, ya sea académicamente o en la práctica de ambas, tampoco tengo problemas con el inglés.</p>
+        </section>
+        <section id="experience">
+            <h2>Experiencia Laboral</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-item-content">
+                        <h3>Práctica Profesional</h3>
+                        <p><strong>Redfarma, Recursos Humanos</strong> (Febrero 2024)</p>
+                        <ul>
+                            <li>Apoyé el desarrollo organizacional en el área de gerencia de personas y bienestar.</li>
+                            <li>Desarrollé planes de acción a partir del estudio de clima laboral 2023.</li>
+                            <li>Realicé investigación de mercado, análisis y planificación de proyectos de mejora.</li>
+                            <li>Presenté proyectos de mejora enfocados en encuestas de bienestar.</li>
+                            <li>Fui evaluado por mi responsabilidad, respeto y capacidad para desarrollar tareas asignadas, destacando en aspectos teóricos y en la proactividad para consultar y aclarar dudas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-item-content">
+                        <h3>Participante de Proyecto</h3>
+                        <p><strong>Universidad Gabriela Mistral, Ingeniería</strong> (Octubre 2022)</p>
+                        <ul>
+                            <li>Alcancé el tercer lugar en la competencia "Desafío Digital Katty Summer" de Oracle, desarrollando aplicaciones para la prevención del suicidio juvenil mediante bots de ayuda web.</li>
+                            <li>Implementé un extenso bloque de códigos para diversificar las respuestas de los bots, mejorando la interacción con los usuarios.</li>
+                            <li>Realicé pruebas exhaustivas en una comunidad de pruebas dentro de la universidad, adaptando el producto a las necesidades del público objetivo.</li>
+                            <li>Presenté ambientes de prueba minuciosamente diseñados, simulando situaciones del mundo real para asegurar un despliegue y funcionamiento sin problemas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-item-content">
+                        <h3>Alumno Prácticante</h3>
+                        <p><strong>Stanley Security, Seguridad</strong> (Enero 2019 - Marzo 2019)</p>
+                        <ul>
+                            <li>Presté servicios de alarmas y seguimiento de señales para sucursales bancarias como Banco de Chile, Santander y Edwards.</li>
+                            <li>Obtuve una calificación de 5.4 sobre 7 por mi desempeño, reflejando mi compromiso y habilidades.</li>
+                            <li>Supervisé señales de alarma, garantizando respuestas inmediatas y coordinando con el equipo de respuesta.</li>
+                            <li>Mantuvieron equipos técnicos operativos, minimizando fallas y brindando soporte directo al personal bancario.</li>
+                            <li>Reduje alarmas falsas mediante la mejora de procedimientos y obtuve feedback positivo de bancos asociados.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="education">
+            <h2>Formación Académica</h2>
+            <div class="education">
+                <h3>Ingeniería Comercial, Mención Finanzas (Cursando 3°er año)</h3>
+                <p><strong>Universidad Gabriela Mistral</strong> (2022 - Presente)</p>
+                <h3>Enseñanza Técnico Medio</h3>
+                <p><strong>Escuela Industrial Las Nieves, Puente Alto</strong>, Especialidad en Telecomunicaciones (Egresado 2018)</p>
+            </div>
+        </section>
+        <section id="skills">
+            <h2>Habilidades</h2>
+            <div class="skills">
+                <ul>
+                    <li>Gestión en Telecomunicaciones</li>
+                    <li>Comunicación Efectiva</li>
+                    <li>Rapidez de Aprendizaje</li>
+                    <li>Coordinación de Proyectos</li>
+                    <li>Capacidad Analítica</li>
+                    <li>Mejora Continua</li>
+                    <li>Enfoque en Resultados</li>
+                    <li>Capacidad de Adaptabilidad</li>
+                    <li>Espíritu de Superación</li>
+                </ul>
+                <div class="icons">
+                    <i class="fas fa-project-diagram"></i>
+                    <i class="fas fa-comments"></i>
+                    <i class="fas fa-brain"></i>
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+            </div>
+        </section>
+        <section id="languages">
+            <h2>Idiomas</h2>
+            <div class="languages">
+                <ul>
+                    <li>Inglés: Nivel medio</li>
+                </ul>
+            </div>
+        </section>
+        <section id="training">
+            <h2>Capacitación</h2>
+            <div class="training">
+                <ul>
+                    <li>Actualmente capacitándome en la gestión de proyectos IBM</li>
+                    <li>R</li>
+                    <li>Marketing Estratégico</li>
+                </ul>
+            </div>
+        </section>
+        <section id="licenses">
+            <h2>Licencias</h2>
+            <div class="licenses">
+                <ul>
+                    <li>Licencia de conducir clase B</li>
+                </ul>
+            </div>
+        </section>
+        <section id="gallery">
+            <h2>Galería</h2>
+            <div class="gallery">
+                <img src="Screenshot_44.png" alt="Image 1">
+                <img src="Screenshot_45.png" alt="Image 2">
+                <img src="Screenshot_47.png" alt="Image 3">
+                <img src="Screenshot_46.png" alt="Image 4">
+                <img src="Screenshot_43.png" alt="Image 5">
+            </div>
+        </section>
+        <section id="comments" class="comments-section">
+            <h2>Comentarios</h2>
+            <div class="comment-box">
+                <textarea id="comment-input" placeholder="Escribe tu comentario..."></textarea>
+                <button onclick="addComment()">Enviar</button>
+            </div>
+            <ul id="comments-list" class="comments-list"></ul>
+        </section>
+        <div class="contact-info" id="contact">
+            <h2>Contacto</h2>
+            <p><i class="fas fa-phone"></i> +569 3450 7331</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:mariomartinezilscln@gmail.com">mariomartinezilscln@gmail.com</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/mario-mart%C3%ADnez-23a943204/" target="_blank">LinkedIn</a></p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Mario Martínez Gómez. Todos los derechos reservados.</p>
+        <p>Diseñado por Mario Martínez Gómez</p>
+    </footer>
+    <div class="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <div class="custom-audio">
+        <audio id="background-audio" controls autoplay loop>
+            <source src="forest-musica.mp3" type="audio/mpeg">
+            <source src="forest-musica.ogg" type="audio/ogg">
+            Tu navegador no soporta la reproducción de audio.
+        </audio>
+    </div>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        window.onload = function() {
+            var audio = document.getElementById('background-audio');
+            audio.volume = 0.25;
+            audio.play();
+        }
+
+        function addComment() {
+            const commentInput = document.getElementById('comment-input');
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                const commentList = document.getElementById('comments-list');
+                const commentItem = document.createElement('li');
+                commentItem.classList.add('comment-item');
+                commentItem.innerHTML = `<p class="comment-author">Visitante:</p><p>${commentText}</p>`;
+                commentList.appendChild(commentItem);
+                commentInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
